@@ -3,7 +3,7 @@ package com.vp.messaging.controller;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.vp.messaging.model.Employee;
-import com.vp.messaging.producer.EmployeeMessageProducer;
+import com.vp.messaging.service.CsvMessageProducerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CsvUploaderController {
 
-    private final EmployeeMessageProducer employeeMessageProducer;
+    private final CsvMessageProducerService csvMessageProducerService;
 
     @PostMapping
     public ResponseEntity<List<Employee>> uploadCsv(@RequestParam("file") MultipartFile file) {
@@ -40,7 +40,7 @@ public class CsvUploaderController {
 
             // convert `CsvToBean` object to list of users
             List<Employee> employees = csvToBean.parse();
-            employees.forEach(employeeMessageProducer::sendMessage);
+            employees.forEach(csvMessageProducerService::sendCsvMessage);
             return ResponseEntity.ok(employees);
         } catch (Exception ex) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

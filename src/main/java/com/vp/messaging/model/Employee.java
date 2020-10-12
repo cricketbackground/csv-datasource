@@ -15,7 +15,7 @@ public class Employee {
     @CsvBindByName
     private long id;
 
-    @CsvBindByName(column = "name")
+    @CsvBindByName(column = "first name")
     private String name;
 
     @CsvBindByName
