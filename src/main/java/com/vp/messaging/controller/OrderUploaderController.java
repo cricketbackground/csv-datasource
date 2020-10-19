@@ -36,7 +36,7 @@ public class OrderUploaderController {
             CsvToBean<SubscriptionOrderMessage> csvToBean = new CsvToBeanBuilder<SubscriptionOrderMessage>(reader)
                     .withType(SubscriptionOrderMessage.class)
                     .withIgnoreLeadingWhiteSpace(true)
-                    //.withSkipLines(1)
+                    .withSkipLines(1)
                     .build();
 
             // convert `CsvToBean` object to list of users
