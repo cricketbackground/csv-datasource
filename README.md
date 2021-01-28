@@ -1,3 +1,6 @@
+## LGTM
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cricketbackground/csv-datasource.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cricketbackground/csv-datasource/alerts/)
+
 ## What this app does?
 Reads CVS and sends kafka messages to "test" topic
 
